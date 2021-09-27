@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,32 +16,33 @@
     <h5 class="text-center text-uppercase py-3">Find the index of alphabets</h5> </div>
   <div class="col-lg-12">
     <div class="container py-4">
-      <form method="GET" action="">
-      <input type="text"  class="form-control" name="str"value="<?=($_GET)?$_GET['str']:''?>">
-      <input type="submit" name="submit" class="btn btn-success mt-4 px-5">
+      <form method="POST">
+      <input type="text"  class="form-control" name="str"value="<?=($_POST)?$_POST['str']:''?>">
+      <input type="submit" name="submit" value="Submit" class="btn btn-success mt-4 px-5">
     </form>
       </div>
+       <?php
+  if( isset($_POST['submit']) && $_POST['str'] ) {
+    $str = $_POST['str'];
+    $str_length = strlen($str);
+    $result = " ";
+  echo '<div class="col-md-8">';
+    for( $i = 0;$i<$str_length; $i++ ) {
+      $code = ord(strtoupper($str[$i]));
+      if( $code > 64 && $code < 91 ) {
+        $result = $code-64;
+        echo "<li>The Index of '".$str[$i]."' ".$result. "<br></li>";
+      } else {
+        
+       echo "<li> '".$str[$i]."' is not alphabet  <br></li>";
+      }
+    }
+    echo '</div>';
+  }
+?>
   </div>
+
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
-<?php
-  if(isset($_GET['submit'])){
-    $str=$_GET['str'];
-    $str_length=strlen($str);
-    $result=" ";
-    echo '<div class="col-md-8">';
-      for($i=0;$i<$str_length; $i++){
-        $code = ord(strtoupper($str[$i]));
-        if($code > 64 && $code < 91){
-          $result=$code-64;
-          echo "<li>The Index of '".$str[$i]."' ".$result. "<br></li>";
-        }else{
-          
-         echo "<li> '".$str[$i]."' is not alphabet  <br></li>";
-        }
-      }
-    echo '</div>';
-  }
-?>

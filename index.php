@@ -11,11 +11,11 @@
 </head>
 <body>
   <div class="container mt-3 bg-success">
-    <h5 class="text-center text-uppercase py-3">Find the Postion of alphabets</h5> </div>
+    <h5 class="text-center text-uppercase py-3">Find the index of alphabets</h5> </div>
   <div class="col-lg-12">
     <div class="container py-4">
-      <form method="get" action="">
-      <input type="text"  class="form-control" name="str" value="<?=($_GET)?$_GET['str']:''?>">
+      <form method="GET" action="">
+      <input type="text"  class="form-control" name="str"value="<?=($_GET)?$_GET['str']:''?>">
       <input type="submit" name="submit" class="btn btn-success mt-4 px-5">
     </form>
       </div>
@@ -34,9 +34,10 @@
         $code = ord(strtoupper($str[$i]));
         if($code > 64 && $code < 91){
           $result=$code-64;
-          echo "<li>The Index of ".$str[$i]." ".$result. "<br></li>";
+          echo "<li>The Index of '".$str[$i]."' ".$result. "<br></li>";
         }else{
-          echo $str[$i]." is not an alphabet";
+          
+         echo "<li> '".$str[$i]."' is not alphabet  <br></li>";
         }
       }
     echo '</div>';
